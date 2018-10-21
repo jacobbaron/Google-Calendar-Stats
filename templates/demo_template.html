@@ -1,7 +1,5 @@
 {% extends 'list_calendars.html' %}
-<!DOCTYPE html>
-<html>
-<head>
+{% block header %}
 
 	<meta charset="utf-8">
 	<link href="./nvd3/build/nv.d3.css" rel="stylesheet" type="text/css">
@@ -10,9 +8,8 @@
 	<script src="./nvd3/examples/lib/stream_layers.js"></script>
 <link rel="stylesheet" href="styles.css">
 
-</head>
-<body>
+{% endblock %}
+{% block content %}
 	<div id="content">{{d3_code}}</div>	
 
-</body>
-</html>
+{% endblock %}
