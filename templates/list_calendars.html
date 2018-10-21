@@ -26,7 +26,7 @@
     <h1>Select calendars to check out:</h1>
     <br>
     <form action="{{ url_for('handle_data') }}" method="post">
-        {% for cal in g.cals_to_analyze %}
+        {% for cal in g.cal_list %}
             <input type="checkbox" name="acs" value =  "{{cal}}"> {{cal}}<br>
         {% endfor %}
     
