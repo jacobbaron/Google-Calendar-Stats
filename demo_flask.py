@@ -177,7 +177,7 @@ def client_secrets_config():
                     'auth_uri':os.environ.get('auth_uri'),
                     'token_uri':os.environ.get('token_uri'),
                     'auth_provider_x509_cert_url':os.environ.get('auth_provider_x509_cert_url'),
-                    'client_secret':os.environ.get('client_secret')}
+                    'client_secret':os.environ.get('client_secret')}}
   
   
 if __name__ == '__main__':
