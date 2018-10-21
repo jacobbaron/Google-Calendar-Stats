@@ -118,7 +118,7 @@ def get_data(service,cals_to_include = 'all'):
     for CalName in cals_to_include:
         events.extend(get_events(service,name2id[CalName],startTime,endTime))
     data = gen_event_table(events,id2name)
-    data = data[(~data.AllDay)]
+    data = data[(~data.AllDay)].fillna(value=0)
     return data
     # plt.figure(1)  
 
