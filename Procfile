@@ -1,1 +1,1 @@
-web: gunicorn demo_flask.py:app  --log-file -
+web: gunicorn demo_flask:app  --log-file -
