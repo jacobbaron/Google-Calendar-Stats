@@ -1,2 +1,1 @@
-release: python demo_flask.py
-web: gunicorn  --log-file -
+web: gunicorn demo_flask.py:app  --log-file -
