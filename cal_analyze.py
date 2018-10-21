@@ -5,6 +5,8 @@ import pdb
 import time as _time
 import pandas as pd
 import numpy as np
+import matplotlib as mpl
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from timezone import LocalTimezone
