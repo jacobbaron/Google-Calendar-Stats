@@ -161,6 +161,9 @@ def get_gcal_service():
       API_SERVICE_NAME, API_VERSION, credentials=credentials)
   return service
 
+@app.route('/google56550f8608ca015c.html')
+def verification():
+  return flask.render_template('google56550f8608ca015c.html')
 
 
 def credentials_to_dict(credentials):
