@@ -1,1 +1,2 @@
-web: gunicorn gettingstarted.wsgi --log-file -
+release: python demo_flask.py
+web: gunicorn  --log-file -
