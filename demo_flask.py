@@ -84,7 +84,7 @@ def get_gcal_service():
 @app.route('/authorize')
 def authorize():
   # Create flow instance to manage the OAuth 2.0 Authorization Grant Flow steps.
-  flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
+  flow = google_auth_oauthlib.flow.Flow.from_client_secrets_config(
       client_secrets_config(), scopes=SCOPES)
 
   flow.redirect_uri = flask.url_for('oauth2callback', _external=True)
