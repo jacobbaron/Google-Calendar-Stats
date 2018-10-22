@@ -53,7 +53,7 @@ def test_api_request():
   # return ('Data Loaded! <a href="/bar_plot">Click here to view!</a></td>')
 @app.route('/handle_data')
 def handle_data():
-  if request.method == "POST":
+  if flask.request.method == "POST":
     cals_to_analyze=flask.request.values.getlist('acs')
     flask.g.cals_to_analyze = cals_to_analyze
     service = get_gcal_service()
@@ -64,7 +64,7 @@ def handle_data():
     return flask.render_template('demo_template.html',d3_code=plot,cal_list=cal_list)
   else:
     return flask.redirect(flask.url_for('test_api_request'))
-  # return flask.redirect(flask.url_for('bar_plot'))
+  # return flask.redirect(flask.url_for('bar_plot'  ))
 
 
 # @app.route('/bar_plot')
