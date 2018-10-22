@@ -154,6 +154,7 @@ def plot_cal_bars(data):
             .resample('W').sum().unstack(level = 0)).round(1)
 
     #xlabels
+    weekShow = weekShow.fillna(value=0)
     weekNames =  weekShow.set_index(weekShow.index.strftime("%b %d")).index.tolist()
     #mini bar names
     calNames = weekShow.columns.tolist()

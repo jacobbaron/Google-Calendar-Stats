@@ -51,16 +51,19 @@ def test_api_request():
   return flask.render_template('list_calendars.html',cal_list = cal_list)
   # flask.g.data = get_data(service)
   # return ('Data Loaded! <a href="/bar_plot">Click here to view!</a></td>')
-@app.route('/handle_data', methods=['POST'])
+@app.route('/handle_data')
 def handle_data():
-  cals_to_analyze=flask.request.values.getlist('acs')
-  flask.g.cals_to_analyze = cals_to_analyze
-  service = get_gcal_service()
-  cal_data = get_calendar_list(service)
-  cal_list = list(cal_data[0].keys())
-  data = get_data(service, flask.g.cals_to_analyze)
-  plot = plot_cal_bars(data)
-  return flask.render_template('demo_template.html',d3_code=plot,cal_list=cal_list)
+  if request.method == "POST":
+    cals_to_analyze=flask.request.values.getlist('acs')
+    flask.g.cals_to_analyze = cals_to_analyze
+    service = get_gcal_service()
+    cal_data = get_calendar_list(service)
+    cal_list = list(cal_data[0].keys())
+    data = get_data(service, flask.g.cals_to_analyze)
+    plot = plot_cal_bars(data)
+    return flask.render_template('demo_template.html',d3_code=plot,cal_list=cal_list)
+  else:
+    return flask.redirect(flask.url_for('test_api_request'))
   # return flask.redirect(flask.url_for('bar_plot'))
 
 
