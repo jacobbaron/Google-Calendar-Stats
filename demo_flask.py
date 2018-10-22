@@ -51,7 +51,7 @@ def test_api_request():
   return flask.render_template('list_calendars.html',cal_list = cal_list)
   # flask.g.data = get_data(service)
   # return ('Data Loaded! <a href="/bar_plot">Click here to view!</a></td>')
-@app.route('/handle_data')
+@app.route('/handle_data',methods=["GET", "POST"])
 def handle_data():
   if flask.request.method == "POST":
     cals_to_analyze=flask.request.values.getlist('acs')
