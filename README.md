@@ -7,6 +7,8 @@ The obvious next step would be to add a database to reduce API calls.
 
 There is a function to generate a word cloud based on the text within the events, but haven't yet implemented it within the app. 
 
+cal_analyze.py handles calls to the API, reshapes the data into a useable form, and generates the plot
+gcal_flask.py generates the app and handles authentication
 Deployed on Heroku at https://frozen-basin-79689.herokuapp.com/
 
 Started from here:
