@@ -119,7 +119,7 @@ def oauth2callback():
   credentials = flow.credentials
   flask.session['credentials'] = credentials_to_dict(credentials)
 
-  return flask.redirect(flask.url_for('test_api_request'))
+  return flask.redirect(flask.url_for('request_cal_list'))
 
 
 @app.route('/revoke')
@@ -186,6 +186,5 @@ if __name__ == '__main__':
   #     When running in production *do not* leave this option enabled.
   os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '0'
   port = int(os.environ.get("PORT", 8000))
-  # Specify a hostname and port that are set as a valid redirect URI
-  # for your API project in the Google API Console.
+  
   app.run('0.0.0.0', port=port, debug=True,ssl_context='adhoc')
