@@ -1,8 +1,5 @@
-
 from datetime import date, datetime, timedelta, tzinfo
-# import feed.date.rfc3339 as rfc
 import pdb
-import time as _time
 import pandas as pd
 import numpy as np
 import matplotlib as mpl
@@ -22,12 +19,9 @@ from markupsafe import Markup
 Local = LocalTimezone()
 
 def get_prev_week():
-
     d = date.today()- timedelta(weeks = 1)
-
     while d.weekday() != 0:
         d = d - timedelta(days = 1)
-
     startTime = datetime.combine(d, datetime.min.time())
     endTime = startTime + timedelta(weeks = 1)
     return (startTime.replace(tzinfo = Local).isoformat("T"), 
@@ -110,13 +104,6 @@ def gen_event_table(events, id2name):
     data = pd.DataFrame(lst,columns = columns)
     data = data.set_index("StartTime")
     return data
-
-#def white_color_func(word, font_size, position, orientation, random_state=None,
-# **kwargs):
-#    return "hsl(0, 0%%, %d%%)" % random.randint(60, 100)
-
-#def chunker(seq, size):
-#    return (seq[pos:pos + size] for pos in xrange(0, len(seq), size))
 
 def get_data(service,cals_to_include = 'all'):    
     #requests all available events from particular calendars from the last year.
