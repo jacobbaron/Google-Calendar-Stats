@@ -3,7 +3,7 @@ cachetools==2.1.0
 certifi==2018.10.15
 cffi==1.11.4
 chardet==3.0.4
-cryptography==2.1.4
+cryptography==2.3
 decorator==4.2.1
 distributed==1.20.2
 docutils==0.14
@@ -28,7 +28,7 @@ httplib2==0.11.3
 idna==2.6
 imageio==2.2.0
 imagesize==0.7.1
-Jinja2==2.10
+Jinja2==2.10.1
 jsonschema==2.6.0
 keyring==13.2.1
 lxml==4.1.1
@@ -41,11 +41,10 @@ olefile==0.45.1
 openpyxl==2.4.10
 pandas==0.22.0
 pluggy==0.6.0
-pycrypto==2.6.1
 python-dateutil==2.6.1
 python-nvd3==0.15.0
 pytz==2018.3
-requests==2.18.4
+requests==2.20.0
 requests-oauthlib==1.0.0
 scipy==1.0.0
 wordcloud==1.4.1
