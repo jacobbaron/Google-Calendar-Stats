@@ -9,9 +9,9 @@ import googleapiclient.discovery
 from cal_analyze import get_data,plot_cal_bars, get_calendar_list
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 
-# # This variable specifies the name of a file that contains the OAuth 2.0
-# # information for this application, including its client_id and client_secret.
-# CLIENT_SECRETS_FILE = "client_secret_268205187149-tke3jbrhcgk8abdminqpf27p1nu06ssc.apps.googleusercontent.com.json"
+# This variable specifies the name of a file that contains the OAuth 2.0
+# information for this application, including its client_id and client_secret.
+CLIENT_SECRETS_FILE = "client_secret_268205187149-tke3jbrhcgk8abdminqpf27p1nu06ssc.apps.googleusercontent.com.json"
 
 # This OAuth 2.0 access scope allows for full read/write access to the
 # authenticated user's account and requires requests to use an SSL connection.
