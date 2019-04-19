@@ -1,6 +1,6 @@
 # gcal-stats
 
-A flask web application that fetches Google Calendar event information and displays information about how you have been spending your time over the past year. 
+A [Flask](http://flask.pocoo.org/) web application that fetches Google Calendar event information and displays information about how you have been spending your time over the past year. 
 
 Currently, no data is stored on the server, and there is no persistance layer.
 The obvious next step would be to add a database to reduce API calls. 
