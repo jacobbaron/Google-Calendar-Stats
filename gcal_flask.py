@@ -8,7 +8,7 @@ import google.oauth2.credentials
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
 from cal_analyze import get_data,plot_cal_bars, get_calendar_list
-from markupsafe import Markup
+#from markupsafe import Markup
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 # This variable specifies the name of a file that contains the OAuth 2.0
 # information for this application, including its client_id and client_secret.
@@ -21,36 +21,35 @@ API_SERVICE_NAME = 'calendar'
 API_VERSION = 'v3'
 
 app = flask.Flask(__name__)
-# Note: A secret key is included in the sample so that it works.
-# If you use this code in your application, replace this with a truly secret
-# key. See http://flask.pocoo.org/docs/0.12/quickstart/#sessions.
+
+#get secret key from heroku environment variable
 app.secret_key = os.environ.get('app_secret_key')
 
 
 @app.route('/')
 def index():
   if 'credentials' not in flask.session:
-    return ('<a href="/test">Sign in to view your calendar data!</a><br><a href="/clear">Sign out')
+    return ('<a href="/login">Sign in to view your calendar data!</a><br><a href="/clear">Sign out')
   else:
-    return ('<a href="/test">Signed in! Click here to view your calendar data!</a><br><a href="/clear">Sign out')
+    return ('<a href="/login">Signed in! Click here to view your calendar data!</a><br><a href="/clear">Sign out')
 
 
-@app.route('/test')
-def test_api_request():
+@app.route('/login')
+def request_cal_list():
   if 'credentials' not in flask.session:
     return flask.redirect('authorize')
   # Load credentials from the session.
   credentials = google.oauth2.credentials.Credentials(
       **flask.session['credentials'])
+  #get the google calendar api service
   service = googleapiclient.discovery.build(
       API_SERVICE_NAME, API_VERSION, credentials=credentials)  
-  # service = get_gcal_service()
+  
   cal_data = get_calendar_list(service)
 
   cal_list = list(cal_data[0].keys())
   return flask.render_template('list_calendars.html',cal_list = cal_list)
-  # flask.g.data = get_data(service)
-  # return ('Data Loaded! <a href="/bar_plot">Click here to view!</a></td>')
+
 @app.route('/handle_data',methods=["GET", "POST"])
 def handle_data():
   if flask.request.method == "POST":
@@ -60,22 +59,15 @@ def handle_data():
     cal_data = get_calendar_list(service)
     cal_list = list(cal_data[0].keys())
     data = get_data(service, flask.g.cals_to_analyze)
+    
+    #generate the js based on D3 for the plot
     plot = plot_cal_bars(data)
+    
     return flask.render_template('demo_template.html',d3_code=plot,cal_list=cal_list)
   else:
-    return flask.redirect(flask.url_for('test_api_request'))
+    return flask.redirect(flask.url_for('request_cal_list'))
   # return flask.redirect(flask.url_for('bar_plot'  ))
 
-
-# @app.route('/bar_plot')
-# def bar_plot():
-#   data = getattr(flask.g, 'data', None)
-
-  
-#   #output.close()
-#   r
-
- # return 'Code executed... I guess it worked!'
 def get_gcal_service():
   if 'credentials' not in flask.session:
     return flask.redirect('authorize')
